@@ -15,19 +15,9 @@ def canUnlockAll(boxes):
     if boxes[0] == [] or not isinstance(boxes, list):
         return False
 
-    opens = [True] + [False] * (len(boxes) - 1)
-
-    def open_box(box):
-        """Open all the associate box"""
-
-        if len(box) == 0 or all([opens[k] for k in box if k in range(
-                0, len(boxes))]
-                                ):
-            return
-        else:
-            for key in box:
-                if key in range(0, len(boxes)):
-                    opens[key] = True
-                    open_box(boxes[key])
-    open_box(boxes[0])
-    return all(opens)
+    opens = [0]
+    for idx, box in enumerate(boxes):
+        for key in box:
+            if key not in opens and key in range(0, len(boxes)) and key != idx:
+                opens.append(key)
+    return len(opens) == len(boxes)
