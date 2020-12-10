@@ -13,13 +13,15 @@ def canUnlockAll(boxes):
 
     """
     opens = [True] + [False] * (len(boxes) - 1)
+    if len(boxes) < 1 or not isinstance(boxes[0], list):
+        return False
 
     def open_box(box):
         """Open all the associate box"""
 
-        if len(box) == 0 or all(
-                [opens[k] for k in box] if k in range(0, len(boxes))
-        ):
+        if len(box) == 0 or all([opens[k] for k in box if k in range(
+                0, len(boxes))]
+                                ):
             return
         else:
             for key in box:
