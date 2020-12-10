@@ -12,9 +12,10 @@ def canUnlockAll(boxes):
         (bool): True if we can open all the boxes, otherwise return False
 
     """
-    opens = [True] + [False] * (len(boxes) - 1)
-    if len(boxes) < 1 or not isinstance(boxes[0], list):
+    if boxes[0] == [] or not isinstance(boxes, list):
         return False
+
+    opens = [True] + [False] * (len(boxes) - 1)
 
     def open_box(box):
         """Open all the associate box"""
