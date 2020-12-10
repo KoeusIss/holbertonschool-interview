@@ -17,7 +17,9 @@ def canUnlockAll(boxes):
     def open_box(box):
         """Open all the associate box"""
 
-        if len(box) == 0 or all([opens[k] for k in box]):
+        if len(box) == 0 or all(
+                [opens[k] for k in box] if k in range(0, len(boxes))
+        ):
             return
         else:
             for key in box:
