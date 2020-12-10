@@ -23,5 +23,5 @@ def canUnlockAll(boxes):
             for key in box:
                 opens[key] = True
                 open_box(boxes[key])
-        open_box(boxes[0])
-        return all(opens)
+    open_box(boxes[0])
+    return all(opens)
