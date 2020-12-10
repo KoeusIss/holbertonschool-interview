@@ -25,7 +25,8 @@ def canUnlockAll(boxes):
             return
         else:
             for key in box:
-                opens[key] = True
-                open_box(boxes[key])
+                if key in range(0, len(boxes)):
+                    opens[key] = True
+                    open_box(boxes[key])
     open_box(boxes[0])
     return all(opens)
