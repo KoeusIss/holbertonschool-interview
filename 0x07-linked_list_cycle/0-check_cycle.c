@@ -10,6 +10,8 @@ int check_cycle(listint_t *list)
 {
 	listint_t *harry, *turtle;
 
+	if (!list)
+		return (0);
 	turtle = list;
 	harry = list->next;
 	while (turtle && harry && harry->next)
