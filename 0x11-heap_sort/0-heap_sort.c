@@ -19,16 +19,16 @@ void swap(int *first, int *second)
  * @idx: the given idx
  * @size: original size of the array
  */
-void heapify(int *array, int n, int idx, int size)
+void heapify(int *array, size_t n, int idx, size_t size)
 {
 	int largest = idx;
 	int left = 2 * idx + 1;
 	int right = 2 * idx + 2;
 
-	if (left < n && array[left] > array[largest])
+	if (left < (int) n && array[left] > array[largest])
 		largest = left;
 
-	if (right < n && array[right] > array[largest])
+	if (right < (int) n && array[right] > array[largest])
 		largest = right;
 
 	if (largest != idx)
@@ -53,7 +53,7 @@ void heap_sort(int *array, size_t size)
 	for (i = size / 2 - 1; i >= 0; i--)
 		heapify(array, size, i, size);
 
-	for (i = size - 1; i >= 0; i--)
+	for (i = size - 1; i > 0; i--)
 	{
 		swap(&array[0], &array[i]);
 		print_array(array, size);
