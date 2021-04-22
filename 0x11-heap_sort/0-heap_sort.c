@@ -5,7 +5,8 @@
  * @first: Pointer to the first element
  * @second: Pointer to the second element
  */
-void swap(int *first, int *second) {
+void swap(int *first, int *second)
+{
 	int temp = *first;
 	*first = *second;
 	*second = temp;
@@ -14,26 +15,27 @@ void swap(int *first, int *second) {
 /**
  * heapify - Finds the largest element among a root
  * @array: Pointer to the given array
- * @size: The size of given array
+ * @n: The size of given array
  * @idx: the given idx
+ * @size: original size of the array
  */
-void heapify(int *array, int size, int idx)
+void heapify(int *array, int n, int idx, int size)
 {
 	int largest = idx;
 	int left = 2 * idx + 1;
 	int right = 2 * idx + 2;
 
-	if (left < size && array[left] > array[largest])
+	if (left < n && array[left] > array[largest])
 		largest = left;
 
-	if (right < size && array[right] > array[largest])
+	if (right < n && array[right] > array[largest])
 		largest = right;
 
 	if (largest != idx)
 	{
 		swap(&array[idx], &array[largest]);
 		print_array(array, size);
-		heapify(array, size, largest);
+		heapify(array, n, largest, size);
 	}
 }
 
@@ -46,15 +48,15 @@ void heap_sort(int *array, size_t size)
 {
 	int i;
 
+	if (size == 0)
+		return;
 	for (i = size / 2 - 1; i >= 0; i--)
-	{
-		heapify(array, size, i);
-	}
+		heapify(array, size, i, size);
 
 	for (i = size - 1; i >= 0; i--)
 	{
 		swap(&array[0], &array[i]);
 		print_array(array, size);
-		heapify(array, i, 0);
+		heapify(array, i, 0, size);
 	}
 }
