@@ -40,7 +40,7 @@ int advanced_binary(int *array, size_t size, int value)
 
 		mid = (low + high) / 2;
 		if (array[mid] == value && array[mid - 1] != value)
-			return mid;
+			return (mid);
 		else if (array[mid] < value)
 			low = mid + 1;
 		else
