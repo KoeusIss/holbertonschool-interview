@@ -22,7 +22,7 @@ def count_words(subreddit, word_list, after='', counter=None):
 
     if after is None:
         items = counter.items()
-        sorted_items = sorted(items)
+        sorted_items = sorted(items, key=lambda x: x[1])
         for (key, value) in sorted_items:
             if value != 0:
                 print(key, ": ", value)
