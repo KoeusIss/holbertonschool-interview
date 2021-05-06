@@ -29,7 +29,7 @@ def count_words(subreddit, word_list, after='', counter=None):
         return None
 
     params = {'after': after, 'limit': 100}
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     res = requests.get(url, params=params, allow_redirects=False)
 
     if res.status_code == 200:
