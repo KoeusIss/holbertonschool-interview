@@ -12,7 +12,11 @@ trim_trailing_whitespace = false
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{c,h}]
+[*.c]
+indent_style = tab
+indent_size = 4
+
+[*.h]
 indent_style = tab
 indent_size = 4
 
